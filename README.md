@@ -12,3 +12,6 @@ npm run start:dev
 
 # Comando para criar um modulo no NestJS
 nest g module jogadores
+
+# Comando para criar um controller no NestJS
+nest g controller jogadores
