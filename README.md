@@ -15,3 +15,6 @@ nest g module jogadores
 
 # Comando para criar um controller no NestJS
 nest g controller jogadores
+
+# Comando para criar um service no NestJS
+nest g service jogadores
