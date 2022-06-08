@@ -75,14 +75,17 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 
+# Comando para criar o projeto NestJS
+nest new project-name
+
 # Comando para rodar o projeto
 npm run start:dev
 
 # Comando para criar um modulo no NestJS
-nest g module jogadores
+nest g module module-name
 
 # Comando para criar um controller no NestJS
-nest g controller jogadores
+nest g controller controller-name
 
 # Comando para criar um service no NestJS
-nest g service jogadores
+nest g service service-name
