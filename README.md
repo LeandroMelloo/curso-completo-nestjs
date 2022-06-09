@@ -75,6 +75,13 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 
+# Dependencias do projeto
+npm i -g @nestjs/cli
+npm install --save @nestjs/swagger swagger-ui-express
+npm install --save typeorm mysql2
+npm install pg
+npm i --save @nestjs/microservices
+
 # Comando para criar o projeto NestJS
 nest new project-name
 
