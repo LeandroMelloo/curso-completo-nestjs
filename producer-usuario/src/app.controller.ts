@@ -2,6 +2,7 @@ import { Controller, Logger } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { AppService } from './app.service';
 import { UsuarioEntity } from './interfaces/usuario.entity';
+import { Usuario } from './interfaces/usuario.interface';
 
 @Controller()
 export class AppController {
@@ -12,6 +13,11 @@ export class AppController {
   @MessagePattern('find-all-user')
   async index(): Promise<UsuarioEntity[]> {
     return this.appService.findAll();
+  }
+
+  @MessagePattern('find-user')
+  async find(@Payload() data: any): Promise<Usuario> {
+    return this.appService.find(Number(data.value.id));
   }
 
   @MessagePattern('create-user')
