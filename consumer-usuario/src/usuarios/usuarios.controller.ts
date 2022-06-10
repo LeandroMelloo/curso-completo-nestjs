@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, OnModuleInit, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, OnModuleInit, Param, Patch, Post, Put } from '@nestjs/common';
 import { Client, ClientKafka, Transport } from '@nestjs/microservices';
 import { ApiBody } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
@@ -24,7 +24,7 @@ export class UsuariosController implements OnModuleInit{
     private client: ClientKafka
 
     async onModuleInit() {
-        const requestPatters = ['find-all-user', 'find-user'];
+        const requestPatters = ['find-all-user', 'find-user', 'create-user'];
 
         requestPatters.forEach(async pattern => {
             this.client.subscribeToResponseOf(pattern); // esperando a mensagem ser respondida pelo Kafka
@@ -47,8 +47,8 @@ export class UsuariosController implements OnModuleInit{
     // create
     @Post()
     @ApiBody({ type: UsuarioDto })
-    create(@Body() usuario: UsuarioDto) {
-        return this.client.emit('create-user', usuario);
+    create(@Body() usuario: UsuarioDto): Observable<Usuario> {
+        return this.client.send('create-user', usuario);
     }
 
     // update
@@ -65,4 +65,17 @@ export class UsuariosController implements OnModuleInit{
     remove(@Param('id') id: number) {
         return this.client.emit('delete-user', {id});
     }
+
+    // activate
+    @Patch(':id/ativar')
+    activate(@Param('id') id: number) {
+        return this.client.emit('activate-user', {id});
+    }
+
+    // activate
+    @Patch(':id/inativar')
+    inactivate(@Param('id') id: number) {
+        return this.client.emit('inactivate-user', {id});
+    }
+    
 }

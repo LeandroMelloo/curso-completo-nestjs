@@ -21,6 +21,6 @@ async function bootstrap() {
   });
 
   await app.listen();
-  logger.log('Rodadndo microserviço Kafka...');
+  logger.log('Rodando microserviço de usuario com kafka...');
 }
 bootstrap();

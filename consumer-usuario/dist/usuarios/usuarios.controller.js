@@ -20,7 +20,7 @@ const rxjs_1 = require("rxjs");
 const usuario_dto_1 = require("./dtos/usuario.dto");
 let UsuariosController = class UsuariosController {
     async onModuleInit() {
-        const requestPatters = ['find-all-user', 'find-user'];
+        const requestPatters = ['find-all-user', 'find-user', 'create-user'];
         requestPatters.forEach(async (pattern) => {
             this.client.subscribeToResponseOf(pattern);
             await this.client.connect();
@@ -33,7 +33,7 @@ let UsuariosController = class UsuariosController {
         return this.client.send('find-user', { id });
     }
     create(usuario) {
-        return this.client.emit('create-user', usuario);
+        return this.client.send('create-user', usuario);
     }
     update(id, { nome, email, telefone, password }) {
         const payload = { id, nome, email, telefone, password };
@@ -41,6 +41,12 @@ let UsuariosController = class UsuariosController {
     }
     remove(id) {
         return this.client.emit('delete-user', { id });
+    }
+    activate(id) {
+        return this.client.emit('activate-user', { id });
+    }
+    inactivate(id) {
+        return this.client.emit('inactivate-user', { id });
     }
 };
 __decorate([
@@ -78,7 +84,7 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [usuario_dto_1.UsuarioDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", rxjs_1.Observable)
 ], UsuariosController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)(':id'),
@@ -96,6 +102,20 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], UsuariosController.prototype, "remove", null);
+__decorate([
+    (0, common_1.Patch)(':id/ativar'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], UsuariosController.prototype, "activate", null);
+__decorate([
+    (0, common_1.Patch)(':id/inativar'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], UsuariosController.prototype, "inactivate", null);
 UsuariosController = __decorate([
     (0, common_1.Controller)('usuario')
 ], UsuariosController);

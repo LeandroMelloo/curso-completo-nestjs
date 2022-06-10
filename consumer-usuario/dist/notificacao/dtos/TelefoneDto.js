@@ -9,29 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UsuarioDto = void 0;
+exports.TelefoneDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
-class UsuarioDto {
+class TelefoneDto {
 }
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], UsuarioDto.prototype, "nome", void 0);
+], TelefoneDto.prototype, "nome", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
-], UsuarioDto.prototype, "email", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", String)
-], UsuarioDto.prototype, "telefone", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", String)
-], UsuarioDto.prototype, "password", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    __metadata("design:type", String)
-], UsuarioDto.prototype, "status", void 0);
-exports.UsuarioDto = UsuarioDto;
-//# sourceMappingURL=usuario.dto.js.map
+], TelefoneDto.prototype, "telefone", void 0);
+exports.TelefoneDto = TelefoneDto;
+//# sourceMappingURL=TelefoneDto.js.map

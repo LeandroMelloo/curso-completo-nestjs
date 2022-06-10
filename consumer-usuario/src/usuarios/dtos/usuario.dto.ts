@@ -12,4 +12,7 @@ export class UsuarioDto {
 
     @ApiProperty()
     password: string;
+
+    @ApiProperty()
+    status: 'ATIVADO' | 'INATIVADO';
 }

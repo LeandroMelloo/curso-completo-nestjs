@@ -16,4 +16,7 @@ export class UsuarioEntity {
 
     @Column()
     password: string;
+
+    @Column({ default: 'ATIVADO'})
+    status: 'ATIVADO' | 'INATIVADO';
 }

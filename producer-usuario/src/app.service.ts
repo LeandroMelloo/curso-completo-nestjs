@@ -9,13 +9,13 @@ export class AppService {
     constructor(@InjectRepository(UsuarioEntity) private usuarioRepository: Repository<UsuarioEntity>) {}
 
     async findAll(): Promise<UsuarioEntity[]> {
-        return await this.usuarioRepository.find();
+        return await this.usuarioRepository.find({ where: {status: 'ATIVADO' }});
     }
 
     async find(usuarioId: number): Promise<Usuario> {
-        const {id, nome, email, telefone, password } = await this.usuarioRepository.findOne(usuarioId);
+        const {id, nome, email, telefone, password, status } = await this.usuarioRepository.findOne(usuarioId);
 
-        const response: Usuario = { id, nome, email, telefone, password };
+        const response: Usuario = { id, nome, email, telefone, password, status };
 
         return response;
     }
@@ -39,5 +39,13 @@ export class AppService {
 
     async delete(id: number): Promise<void> {
         await this.usuarioRepository.delete({ id })
+    }
+
+    async activate(id: number): Promise<void> {
+        await this.usuarioRepository.update(id, { status: 'ATIVADO' }) // { status: 'ATIVADO } é igual um where
+    }
+
+    async inactivate(id: number): Promise<void> {
+        await this.usuarioRepository.update(id, { status: 'INATIVADO' }) // { status: 'INATIVADO } é igual um where
     }
 }

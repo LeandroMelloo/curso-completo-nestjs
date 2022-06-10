@@ -82,6 +82,8 @@ npm install --save typeorm mysql2
 npm install pg
 npm i --save @nestjs/microservices
 npm i --save kafkajs
+npm i @anchan828/nest-sendgrid
+npm i @nestjs/config
 
 # Comando para criar o projeto NestJS
 nest new project-name
