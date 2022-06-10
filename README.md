@@ -81,6 +81,7 @@ npm install --save @nestjs/swagger swagger-ui-express
 npm install --save typeorm mysql2
 npm install pg
 npm i --save @nestjs/microservices
+npm i --save kafkajs
 
 # Comando para criar o projeto NestJS
 nest new project-name
@@ -96,3 +97,6 @@ nest g controller controller-name
 
 # Comando para criar um service no NestJS
 nest g service service-name
+
+# Comando docker para criar nossa imagem docker
+docker compose up -d
