@@ -35,6 +35,13 @@ let UsuariosController = class UsuariosController {
     create(usuario) {
         return this.client.emit('create-user', usuario);
     }
+    update(id, { nome, email, telefone, password }) {
+        const payload = { id, nome, email, telefone, password };
+        return this.client.emit('update-user', payload);
+    }
+    remove(id) {
+        return this.client.emit('delete-user', { id });
+    }
 };
 __decorate([
     (0, microservices_1.Client)({
@@ -73,6 +80,22 @@ __decorate([
     __metadata("design:paramtypes", [usuario_dto_1.UsuarioDto]),
     __metadata("design:returntype", void 0)
 ], UsuariosController.prototype, "create", null);
+__decorate([
+    (0, common_1.Put)(':id'),
+    (0, swagger_1.ApiBody)({ type: usuario_dto_1.UsuarioDto }),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, usuario_dto_1.UsuarioDto]),
+    __metadata("design:returntype", void 0)
+], UsuariosController.prototype, "update", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], UsuariosController.prototype, "remove", null);
 UsuariosController = __decorate([
     (0, common_1.Controller)('usuario')
 ], UsuariosController);

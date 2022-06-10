@@ -26,4 +26,16 @@ export class AppController {
 
     return await this.appService.create(data.value);
   }
+
+  @MessagePattern('update-user')
+  async update(@Payload() data:any): Promise<void> {
+    this.logger.log(`Usuario: ${JSON.stringify(data)}`) // No Kafka a mensagem é enviada e o consumidaor recebe um payload que é o data e dentro tem um value
+
+    return await this.appService.update(data.value);
+  }
+
+  @MessagePattern('delete-user')
+  async remove(@Payload() data: any): Promise<void> {
+    return this.appService.delete(Number(data.value.id));
+  }
 }

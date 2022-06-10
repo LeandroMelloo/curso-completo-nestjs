@@ -8,4 +8,6 @@ export declare class UsuariosController implements OnModuleInit {
     index(): Observable<Usuario[]>;
     find(id: number): Observable<Usuario>;
     create(usuario: UsuarioDto): Observable<any>;
+    update(id: number, { nome, email, telefone, password }: UsuarioDto): Observable<any>;
+    remove(id: number): Observable<any>;
 }

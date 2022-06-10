@@ -1,4 +1,4 @@
-import { Body, Controller, Get, OnModuleInit, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, OnModuleInit, Param, Post, Put } from '@nestjs/common';
 import { Client, ClientKafka, Transport } from '@nestjs/microservices';
 import { ApiBody } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
@@ -49,5 +49,20 @@ export class UsuariosController implements OnModuleInit{
     @ApiBody({ type: UsuarioDto })
     create(@Body() usuario: UsuarioDto) {
         return this.client.emit('create-user', usuario);
+    }
+
+    // update
+    @Put(':id')
+    @ApiBody({ type: UsuarioDto })
+    update(@Param('id') id: number, @Body() {nome, email, telefone, password}: UsuarioDto) {
+        const payload = { id, nome, email, telefone, password }
+
+        return this.client.emit('update-user', payload);
+    }
+
+    // delete
+    @Delete(':id')
+    remove(@Param('id') id: number) {
+        return this.client.emit('delete-user', {id});
     }
 }

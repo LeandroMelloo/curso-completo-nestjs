@@ -23,4 +23,21 @@ export class AppService {
     async create(usuario: Usuario): Promise<UsuarioEntity> {
         return this.usuarioRepository.save(usuario);
     }
+
+    async update(usuarioData: UsuarioEntity): Promise<void> {
+        const { id, nome, email, telefone, password } = usuarioData;
+
+        const usuario = await this.find(id)
+
+        usuario.nome = nome ? nome : usuario.nome
+        usuario.email = email ? email : usuario.email
+        usuario.telefone = telefone ? telefone : usuario.telefone
+        usuario.password = password ? password : usuario.password
+
+        await this.usuarioRepository.save(usuario)
+    }
+
+    async delete(id: number): Promise<void> {
+        await this.usuarioRepository.delete({ id })
+    }
 }
