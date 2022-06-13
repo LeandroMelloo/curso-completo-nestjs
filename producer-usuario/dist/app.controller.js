@@ -26,7 +26,14 @@ let AppController = AppController_1 = class AppController {
         return this.appService.findAll();
     }
     async find(data) {
-        return this.appService.find(Number(data.value.id));
+        if (!Number(data.value.id)) {
+            throw new common_1.NotFoundException('ID não encontrado');
+        }
+        const user = this.appService.find(Number(data.value.id));
+        if (!user) {
+            throw new common_1.NotFoundException('Usuário não encontrado');
+        }
+        return user;
     }
     async create(data) {
         this.logger.log(`Usuario: ${JSON.stringify(data)}`);

@@ -1,4 +1,4 @@
-import { Controller, Logger } from '@nestjs/common';
+import { Controller, Logger, NotFoundException } from '@nestjs/common';
 import { MessagePattern, Payload } from '@nestjs/microservices';
 import { AppService } from './app.service';
 import { UsuarioEntity } from './interfaces/usuario.entity';
@@ -17,7 +17,18 @@ export class AppController {
 
   @MessagePattern('find-user')
   async find(@Payload() data: any): Promise<Usuario> {
-    return this.appService.find(Number(data.value.id));
+
+    if (!Number(data.value.id)) {
+      throw new NotFoundException('ID não encontrado');
+    }
+    
+    const user = this.appService.find(Number(data.value.id));
+
+    if(!user) {
+      throw new NotFoundException('Usuário não encontrado');
+    }
+
+    return user;
   }
 
   @MessagePattern('create-user')
