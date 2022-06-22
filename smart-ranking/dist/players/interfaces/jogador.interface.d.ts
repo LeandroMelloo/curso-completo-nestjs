@@ -5,5 +5,5 @@ export interface Jogador {
     nome: string;
     ranking: string;
     posicaoRanking: number;
-    urlFotoJogador: string; // AWS - S3
+    urlFotoJogador: string;
 }

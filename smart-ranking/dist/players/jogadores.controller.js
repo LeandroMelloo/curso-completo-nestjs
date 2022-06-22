@@ -11,14 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.JogadoresController = void 0;
+exports.PlayersController = void 0;
 const common_1 = require("@nestjs/common");
-const criar_jogador_dto_1 = require("./dtos/criar-jogador.dto");
-let JogadoresController = class JogadoresController {
-    async criarAtualizarJogador(criarJogadorDto) {
-        const { email } = criarJogadorDto;
+const create_player_dto_1 = require("./dtos/create-player.dto");
+let PlayersController = class PlayersController {
+    async createUpdatePlayer(createPlayer) {
+        const { email } = createPlayer;
         return JSON.stringify(`{
             "email": ${email}
         }`);
@@ -28,11 +27,11 @@ __decorate([
     (0, common_1.Post)('jogadores'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_a = typeof criar_jogador_dto_1.CriarJogadorDto !== "undefined" && criar_jogador_dto_1.CriarJogadorDto) === "function" ? _a : Object]),
+    __metadata("design:paramtypes", [create_player_dto_1.CreatePlayer]),
     __metadata("design:returntype", Promise)
-], JogadoresController.prototype, "criarAtualizarJogador", null);
-JogadoresController = __decorate([
+], PlayersController.prototype, "createUpdatePlayer", null);
+PlayersController = __decorate([
     (0, common_1.Controller)('api/v1/')
-], JogadoresController);
-exports.JogadoresController = JogadoresController;
+], PlayersController);
+exports.PlayersController = PlayersController;
 //# sourceMappingURL=jogadores.controller.js.map
