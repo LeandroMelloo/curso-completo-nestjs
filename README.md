@@ -102,3 +102,7 @@ nest g service service-name
 
 # Comando docker para criar nossa imagem docker
 docker compose up -d
+
+# Comando para instalar Chocolatey
+Get-ExecutionPolicy
+Set-ExecutionPolicy Bypass -Scope Process
