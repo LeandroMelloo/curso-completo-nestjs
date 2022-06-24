@@ -1,0 +1,4 @@
+https://www.postman.com/downloads/
+
+# Chocolatey
+choco install postman

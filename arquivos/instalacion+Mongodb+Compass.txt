@@ -1,0 +1,10 @@
+#Mongodb Server
+https://www.mongodb.com/try/download/community
+
+#Mongodb Compass
+https://www.mongodb.com/try/download/compass
+
+#Chocolatey
+choco install mongodb -y
+
+choco install mongodb-compass -y

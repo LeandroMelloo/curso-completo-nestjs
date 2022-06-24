@@ -1,0 +1,4 @@
+https://www.docker.com/products/docker-desktop
+
+#Chocolatey
+choco install docker-compose
