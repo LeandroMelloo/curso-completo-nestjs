@@ -1,12 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { MailService } from './mail/mail.service';
 
-@Controller()
+@Controller('api')
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  // inversão de depências: quando tenho uma classe que recebe suas depências através de um construtor
+  constructor(private readonly mailService: MailService) {}
 
-  @Get()
+  @Get('send-email')
   getHello(): string {
-    return this.appService.getHello();
+    return this.mailService.sendEmail();
   }
 }
