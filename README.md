@@ -85,6 +85,14 @@ npm i --save kafkajs
 npm i @anchan828/nest-sendgrid
 npm i @nestjs/config
 
+npm i prisma -D
+npm i @prisma/client
+npx prisma init --datasource-provider SQLite
+npx prisma migrate dev
+npx prisma studio
+
+npm i class-validator class-transformer
+
 # Comando para criar o projeto NestJS
 nest new project-name
 
